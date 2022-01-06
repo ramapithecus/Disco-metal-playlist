@@ -1,0 +1,28 @@
+.gridContainer{
+    border: 2em solid yellow;
+    margin: 0.15em;
+}
+div{
+    
+}
+.items{
+    border:0.31em solid green;
+    border-bottom-color: yellowgreen;
+}
+.itemHead{
+    font-size: 4em;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color:firebrick;
+}
+.itemInp{
+    padding: 1.4em;
+    
+}
+hr{
+    color: red;
+    margin: 12px;
+}
+.inputClass{
+        border: 0.15em solid pink;
+    margin : 0.14em;
+}
