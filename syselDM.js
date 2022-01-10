@@ -52,7 +52,7 @@ datum.style.borderRadius = '25em';
 datum.style.opacity = "0.58 ";
 datum.style.zIndex = -2;
 //hr line//
-let HrLine =  document.createElement('hr');
+var HrLine =  document.createElement('hr');
 body.appendChild(HrLine);
 HrLine.style.lineHeight = '1.5em';
 HrLine.style.color = 'black';
@@ -101,32 +101,49 @@ var subBtn = document.createElement('button');
 subBtn.setAttribute('id','subSongBtn');
 subBtn.classList.add('.BtnClass');
 subBtn.textContent  = 'Submit song ';
-subBtn.addEventListener('click',songAdder)
+subBtn.addEventListener('click',songAdder);
 itemInp.appendChild(subBtn);
+//adding songsaving button//
+ var savBtn = document.createElement('button');
+savBtn.setAttribute('id','savSongBtn');
+savBtn.classList.add('.BtnClass');
+savBtn.textContent  = 'Save song? ';
+savBtn.addEventListener('click', songSaver )
+itemInp.appendChild(savBtn); 
+//clear buttom//
+var clrBtn = document.createElement('button');
+clrBtn.setAttribute('id','clearBtn');
+clrBtn.classList.add('.BtnClass');
+clrBtn.textContent  = ' List reset ';
+itemInp.appendChild(clrBtn); 
 //adding songcharter  array lists//
 var itemWanted = document.createElement('div');
 gridContainer.appendChild(itemWanted);
-itemWanted.classList.add('.items');
-gridContainer.appendChild(itemWanted);
-
+itemWanted.classList.add('.items', '.wantedRecords');
+itemWanted.setAttribute('id','wanted')
 //unwanted lists//
 var itemUnwanted = document.createElement('div');
 gridContainer.appendChild(itemUnwanted);
 itemUnwanted.classList.add('.items');
-gridContainer.appendChild(itemUnwanted);
-//creating function//
-function songAdder(){
-    let mark = document.createElement('p');
-itemWanted.appendChild(mark);
-    suma = inpBand.value;
-    console.log(suma);
-    mark = suma.innerHTML;
-    console.log(mark);
+itemUnwanted.setAttribute('id','unwanted')
+//creating function of adding songs//
+ function songAdder(){
+    var record = document.createElement('p');
+     record.classList.add('.records');
+      itemWanted.appendChild(record);
+ var savItem = inpBand.value + inpSong.value;
+   
+    record.innerHTML = savItem.split('/');
+    console.log(record);
     
- 
+    }
+//creating function of saving to local storage//
+function songSaver(){
+    var papa = document.querySelectorAll('.records');
+       localStorage.setItem('record', papa.innerHTML);
+    var hura = localStorage.getItem('record');
+    console.log(hura);
+    console.log(localStorage);
+
 }
-
-
-
-
 
