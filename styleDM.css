@@ -3,7 +3,7 @@
     margin: 0.15em;
 }
 div{
-    
+    border: 0.1em solid black;
 }
 .items{
     border:0.31em solid green;

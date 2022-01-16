@@ -110,12 +110,18 @@ savBtn.classList.add('.BtnClass');
 savBtn.textContent  = 'Save song? ';
 savBtn.addEventListener('click', songSaver )
 itemInp.appendChild(savBtn); 
-//clear buttom//
-var clrBtn = document.createElement('button');
-clrBtn.setAttribute('id','clearBtn');
-clrBtn.classList.add('.BtnClass');
-clrBtn.textContent  = ' List reset ';
-itemInp.appendChild(clrBtn); 
+//clear button//
+var localBtn = document.createElement('button');
+localBtn.setAttribute('id','clearBtn');
+localBtn.classList.add('.BtnClass');
+localBtn.textContent  = ' List reset ';
+itemInp.appendChild(localBtn); 
+// local storage button//
+var localBtn = document.createElement('button');
+localBtn.setAttribute('id','clearBtn');
+localBtn.classList.add('.BtnClass');
+localBtn.textContent  = ' Local storage';
+itemInp.appendChild(localBtn); 
 //adding songcharter  array lists//
 var itemWanted = document.createElement('div');
 gridContainer.appendChild(itemWanted);
@@ -131,19 +137,28 @@ itemUnwanted.setAttribute('id','unwanted')
     var record = document.createElement('p');
      record.classList.add('.records');
       itemWanted.appendChild(record);
- var savItem = inpBand.value + inpSong.value;
-   
-    record.innerHTML = savItem.split('/');
-    console.log(record);
-    
-    }
+       var savItem = inpBand.value +' ' + inpSong.value;
+       record.innerHTML = savItem;
+       localStorage.setItem('name',record.innerHTML)
+        }
 //creating function of saving to local storage//
 function songSaver(){
     var papa = document.querySelectorAll('.records');
        localStorage.setItem('record', papa.innerHTML);
     var hura = localStorage.getItem('record');
+    itemUnwanted.appendChild(hura);
+    console.log(papa);
     console.log(hura);
     console.log(localStorage);
-
 }
-
+// showing local storage to html//
+function showStore(){
+    var hura = document.createElement('p');
+     
+    var gugu = localStorage.getItem('name');
+    console.log(gugu);
+    hura.innerHTML = gugu;
+        itemWanted.appendChild(hura);
+    
+   }
+localBtn.addEventListener('click',showStore);
