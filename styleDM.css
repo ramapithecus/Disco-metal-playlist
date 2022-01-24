@@ -18,6 +18,12 @@ div{
     padding: 1.4em;
     
 }
+.songFilter{
+    background-color: chocolate ;
+    border: 0.3em dashed orange !important;
+    height: 20em;
+    width : 25em;
+}
 hr{
     color: red;
     margin: 12px;

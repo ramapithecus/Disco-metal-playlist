@@ -49,8 +49,8 @@ datum.style.padding = '0.18em 0.42em';
 datum.style.backgroundColor = '#7d8a9e ';
 datum.style.border = ' 0.2em outset rgb(12,155,74)';
 datum.style.borderRadius = '25em';
-datum.style.opacity = "0.58 ";
-datum.style.zIndex = -2;
+datum.style.opacity = "0.58";
+datum.style.zIndex = -30;
 //hr line//
 var HrLine =  document.createElement('hr');
 body.appendChild(HrLine);
@@ -111,14 +111,15 @@ savBtn.textContent  = 'Save song? ';
 savBtn.addEventListener('click', songSaver )
 itemInp.appendChild(savBtn); 
 //clear button//
-var localBtn = document.createElement('button');
-localBtn.setAttribute('id','clearBtn');
-localBtn.classList.add('.BtnClass');
-localBtn.textContent  = ' List reset ';
-itemInp.appendChild(localBtn); 
+var clearBtn= document.createElement('button');
+clearBtn.setAttribute('id','clearBtn');
+clearBtn.classList.add('.BtnClass');
+clearBtn.textContent  = ' List reset ';
+clearBtn.addEventListener('click',songFilter);
+itemInp.appendChild(clearBtn); 
 // local storage button//
 var localBtn = document.createElement('button');
-localBtn.setAttribute('id','clearBtn');
+localBtn.setAttribute('id','localBtn');
 localBtn.classList.add('.BtnClass');
 localBtn.textContent  = ' Local storage';
 itemInp.appendChild(localBtn); 
@@ -139,22 +140,38 @@ itemUnwanted.setAttribute('id','unwanted')
       itemWanted.appendChild(record);
        var savItem = inpBand.value +' ' + inpSong.value;
        record.innerHTML = savItem;
-       localStorage.setItem('name',record.innerHTML)
-        }
+     localStorage.setItem('name',record.innerHTML);
+             }
+  //creating function of filtering songs//
+var songFilterDiv = document.createElement('div');
+    songFilterDiv.classList.add('.songFilter');
+    songFilterDiv.style.visibility = 'hidden';
+    songFilterDiv.style.zIndex = -40;
+itemInp.appendChild(songFilterDiv);
+console.log(songFilterDiv);
+function songFilter(){
+       songFilterDiv.style.visibility = 'visible';
+   songFilterDiv.style.zIndex = 30;
+   songFilterDiv.style.height = '10em';
+    songFilterDiv.style.transform = 'translate(0,-6em)';
+  var savItem = inpBand.value +' ' + inpSong.value;
+    songFilterDiv.innerHTML = savItem;
+    console.log(songFilterDiv);
+}
 //creating function of saving to local storage//
 function songSaver(){
     var papa = document.querySelectorAll('.records');
        localStorage.setItem('record', papa.innerHTML);
-    var hura = localStorage.getItem('record');
+    var hura = localStorage.itemValue;
     itemUnwanted.appendChild(hura);
     console.log(papa);
+    console.log(record)
     console.log(hura);
     console.log(localStorage);
 }
 // showing local storage to html//
 function showStore(){
     var hura = document.createElement('p');
-     
     var gugu = localStorage.getItem('name');
     console.log(gugu);
     hura.innerHTML = gugu;
