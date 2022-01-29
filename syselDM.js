@@ -115,8 +115,16 @@ var clearBtn= document.createElement('button');
 clearBtn.setAttribute('id','clearBtn');
 clearBtn.classList.add('.BtnClass');
 clearBtn.textContent  = ' List reset ';
-clearBtn.addEventListener('click',songFilter);
-itemInp.appendChild(clearBtn); 
+itemInp.appendChild(clearBtn);
+//clearBtn.addEventListener('click',songFilter);
+// filter btn
+var filtBtn= document.createElement('button'); 
+filtBtn.setAttribute('id','filtBtn');
+filtBtn.classList.add('.BtnClass');
+filtBtn.textContent  = ' songfilter ';
+filtBtn.addEventListener('click',songFilter);
+itemInp.appendChild(filtBtn); 
+
 // local storage button//
 var localBtn = document.createElement('button');
 localBtn.setAttribute('id','localBtn');
@@ -132,7 +140,7 @@ itemWanted.setAttribute('id','wanted')
 var itemUnwanted = document.createElement('div');
 gridContainer.appendChild(itemUnwanted);
 itemUnwanted.classList.add('.items');
-itemUnwanted.setAttribute('id','unwanted')
+itemUnwanted.setAttribute('id','unwanted');
 //creating function of adding songs//
  function songAdder(){
     var record = document.createElement('p');
